@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>JSON call in Ajax</title>
+	<script src="js/jquery-1.12.2.min.js"></script>
+  </head>
+  <body>
+  	<div><input type="button" onClick="display();" value="Display JSON" />
+  	<div id='display'></div>
+  	<!-- <div>Search in the JSON: <input type="text" id="searchjson"/><input type="button" onClick="search();" value="Search" /> -->
+  	<script>
+  	  function display() {
+  		$.ajax({ 
+		    type: 'GET', 
+		    url: '../list.json', 
+		    data: { get_param: 'value' }, 
+		    dataType: 'json',
+		    success: function (data) {
+		      var str = JSON.stringify(data);
+  				$('#display').text(str);
+			}
+		});
+	  }
+	</script>
+  </body>
+</html>

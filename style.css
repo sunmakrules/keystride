@@ -1,0 +1,19 @@
+ul {
+list-style-type: none;
+}
+
+li {
+color: green;
+margin: 0px 0px 0px 24px;
+}
+
+h3 {
+color: red;
+margin: 0px 0px 0px -8px;
+}
+
+h2  {
+color: red;
+text-decoration: underline;
+margin: 0px 0px 0px -16px;
+}

@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>JSON call in Ajax</title>
+	<script src="js/jquery-1.12.2.min.js"></script>
+  </head>
+  <body>
+  	<div>Search in the JSON: <input type="text" id="searchjson"/><input type="button" onClick="search();" value="Search" />
+  	<script>
+    function search() {
+      var val = $('#searchjson.value');
+      if(val == null || val == undefined || val == '') {
+        alert("Please enter search text");
+      }
+      else {
+      var id = searchjson(val)
+      }
+      if(id == null) {
+        alert('Not Found');
+      }
+      else {
+        alert('Found');
+      }
+      }
+  	function searchjson(val) {
+  		$.ajax({ 
+		    type: 'GET', 
+		    url: '../list.json', 
+		    data: { get_param: 'value' }, 
+		    dataType: 'json',
+		    success: function (data) {
+        $.each(data, function(index, value) {  
+          getObjects(data,index,val);
+        });
+      }
+		});
+	  }
+
+    function getObjects(data, key, val) {
+      var objects = [];
+          for (var i in data) {
+          if (!data.hasOwnProperty(i)) continue;
+          if (typeof data[i] == 'object') {
+            objects = objects.concat(getObjects(data[i], key, val));
+        } else if (i == key && data[key] == val) {
+            objects.push(data);
+        }
+      }
+        return objects;
+    }
+
+	</script>
+  </body>
+</html>

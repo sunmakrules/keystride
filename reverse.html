@@ -1,0 +1,41 @@
+<html>
+<head>
+<title> Reverse a String </title>
+</head>
+<body>
+	<div id="init"></div>
+	
+	<div id="rev"></div>
+	
+	<script>
+		MyString = 'Hello World';
+		
+		var init = document.getElementById("init");
+
+		var rev = document.getElementById("rev");
+		
+		//creating button element
+		var element = document.createElement("button"); 
+		element.setAttribute("type", 'button');
+		element.setAttribute("onclick", "rev.innerHTML = '<br/>Reversed String: ' + MyString.myrev();");
+		element.innerHTML = 'Reverse';
+		//element.setAttribute("onclick", str.reverse());
+		
+		//Priniting original string in div init
+		init.innerHTML = "Original String: "+ MyString + '<br/><br/>';
+		
+		//appending button element to div
+		init.appendChild(element); 
+
+		
+		//reverse function without using concat
+		String.prototype.myrev = function() {
+		  rs = [];
+	      for (var i = 0, len = this.length; i <= len; i++) {
+			rs.push(this.charAt(len - i));
+		  };
+		  return rs.join('');
+		}
+	</script>
+</body>
+</html>
